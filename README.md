@@ -77,8 +77,6 @@ SELECT
 group by month(start_date),monthname(start_date)
 order by month(start_date);
 
-```
-
 **Answer:**  
 
 Among all the months, March has the highest number of trial plans, while February has the lowest number of trial plans.
@@ -123,8 +121,8 @@ left join event21 on event21.plan_id =event20.plan_id;
 - First, we need to determine
 - The number of customers who have churned, meaning those who have discontinued their subscription.
 - The total number of customers, including both active and churned ones.
-
-- To calculate the churn rate, we divide the number of churned customers by the total number of customers. The result should be rounded to one decimal place.
+- To calculate the churn rate, we divide the number of churned customers by the total number of customers. 
+  The result should be rounded to one decimal place.
 
 ```sql
 
@@ -132,7 +130,7 @@ left join event21 on event21.plan_id =event20.plan_id;
           COUNT(DISTINCT sub.customer_id) AS churned_customers,
           round(100*count(*)/(select count(distinct customer_id) from subscriptions),1) 
 as churned_percentage from subscriptions where plan_id =4;      -- Filter results to customers with churn plan only
-```
+
 **Answer:**
 
 - Out of the total customer base of Foodie-Fi, 307 customers have churned. This represents approximately 30.7% of the overall customer count.
@@ -229,7 +227,7 @@ SELECT COUNT(DISTINCT customer_id) AS num_of_customers
 FROM subscriptions
 WHERE plan_id = 3
   AND start_date <= '2020-12-31';
-```
+
 
 **Answer:**
 - 196 customers have upgraded to an annual plan in 2020.
@@ -263,7 +261,7 @@ SELECT
 FROM trial_plan AS trial
 JOIN annual_plan AS annual
   ON trial.customer_id = annual.customer_id;
-````
+
 
 **Answer:**
 
@@ -345,6 +343,6 @@ on p.customer_id =b.customer_id
 where promonthly_date<basicmonthly_date and year(basicmonthly_date) ='2020';
 
 **Answer:**
-In 2020, there were no instances where customers downgraded from a pro monthly plan to a basic monthly plan.
+***In 2020, there were no instances where customers downgraded from a pro monthly plan to a basic monthly plan.
 ***
 
