@@ -325,6 +325,7 @@ group by 1;
 ### 11. How many customers downgraded from a pro monthly to a basic monthly plan in 2020?
 
 ```sql
+
 with pro_monthly as 
 (
  select customer_id,start_date as promonthly_date from subscriptions 
